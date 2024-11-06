@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Card from "../../Components/Card"
 import { apiUrl } from "../../api";
+import { ProductDetail } from "../../Components/ProductDetail";
 
 
 function Home() {
@@ -30,6 +31,7 @@ function Home() {
             ))
           }
         </div>
+        <ProductDetail />
         
       </>
     )
