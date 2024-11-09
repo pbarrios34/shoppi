@@ -10,6 +10,12 @@ const Card = ({ product }) => {
         context.openProductDetail()
         context.setProductToShow(productDetail)
     }
+
+    const addProductToCart = (productData) => {
+        context.setCount(context.count + 1);
+        context.setCartProducts([...context.cartProducts, productData]);
+    }
+
     return (
         <div 
             className="bg-slate-600 mb-3 cursor-pointer w-full h-80 rounded-lg"
@@ -27,7 +33,7 @@ const Card = ({ product }) => {
                     className="absolute top-0 right-0 flex justify-center items-center bg-black/60 w-6 h-6 rounded-full m-4 font-bold"
                     onClick={(e) => {
                         e.stopPropagation();
-                        context.setCount(context.count + 1);
+                        addProductToCart(product);
                         }
                     }>
                     <PlusIcon className="size-3 text-white" />
