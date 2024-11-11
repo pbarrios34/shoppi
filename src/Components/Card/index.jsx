@@ -9,11 +9,22 @@ const Card = ({ product }) => {
     const showProduct = (productDetail) => {
         context.openProductDetail()
         context.setProductToShow(productDetail)
+        context.closeCheckoutSideMenu()
     }
 
     const addProductToCart = (productData) => {
-        context.setCount(context.count + 1);
-        context.setCartProducts([...context.cartProducts, productData]);
+        // Aquí hacemos la comprobación para ver si el producto ya está en el carrito 
+        const productExists = context.cartProducts.find(p => 
+            p.id === productData.id
+        );
+        // Si ya existe, incrementamos la cantidad  
+        if (productExists) { 
+            context.increaseQuantity(productData.id); 
+        // Si no existe, lo agregamos con quantity 1 
+        } else { 
+            context.setCount(context.count + 1); 
+            context.setCartProducts([...context.cartProducts, { ...productData, quantity: 1 }]); 
+        }
     }
 
     return (

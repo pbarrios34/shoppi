@@ -9,8 +9,8 @@ const ProductDetail = () => {
     const context = useContext(CartContext);
 
     return (
-        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex flex-col fixed bg-slate-400 right-0 border border-black rounded-lg`}>
-            <div className='flex justify-between items-center p-6'>
+        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex flex-col fixed bg-slate-400 right-0 border border-black rounded-2xl`}>
+            <div className='flex justify-between items-center p-6 bg-slate-100 rounded-t-2xl shadow-lg shadow-black-500/40'>
                 <h2 className='font-medium text-xl'>Product Detail</h2>
                 <XMarkIcon 
                     className="size-6 text-black cursor-pointer" 
