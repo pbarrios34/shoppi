@@ -13,19 +13,24 @@ const CheckoutSideMenu = () => {
             (total, product) => total + product.price * product.quantity, 0
         );
     }
+    const totalProductsOrder = () => {
+        return context.cartProducts.reduce(
+            (total, product) => total + product.quantity, 0
+        )
+    }
 
     const handleCheckout = () => {
         const orderToAdd = {
             date: '12.11.24',
             products: context.cartProducts,
-            totalProducts: context.cartProducts.length,
+            totalProducts: totalProductsOrder(),
             totalPrice: calculateTotal()
-        }
+        };
         
         context.setOrder([...context.order, orderToAdd])
         context.setCartProducts([])
     }
-
+    
     return (
         <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex flex-col fixed bg-slate-400 right-0 border border-black rounded-2xl`}>
             <div className='flex justify-between items-center p-6 bg-slate-100 rounded-t-2xl shadow-lg shadow-black-500/40'>
@@ -54,7 +59,7 @@ const CheckoutSideMenu = () => {
             
             <div className="flex justify-between items-center p-6 h-22 bg-slate-100 rounded-b-2xl absolute bottom-0 w-full">
                 <p className="font-bold">Q.{calculateTotal().toFixed(2)}</p>
-                <Link to='/my-orders/last' className="w-3/5">
+                <Link to="/my-orders/last" className="w-3/5">
                     <button 
                         className="h-7 w-full bg-black text-white px-3 rounded-lg"
                         onClick={() => handleCheckout()}>
