@@ -22,6 +22,9 @@ const CartProvider = ({ children }) => {
     // Shopping Cart · Add products to cart
     const [cartProducts, setCartProducts] = useState([]);
 
+    // Shopping Cart · Order
+    const [order, setOrder] = useState([]);
+
     useEffect(() => { 
         const totalCount = cartProducts.reduce(
             (total, product) => 
@@ -85,6 +88,8 @@ const CartProvider = ({ children }) => {
             increaseQuantity,
             decreaseQuantity,
             removeProduct,
+            order, 
+            setOrder,
         }}>
             {children}
         </CartContext.Provider>
