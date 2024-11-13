@@ -8,17 +8,19 @@ function MyOrders() {
 
     return (
       <>
-        MyOrders
-        {
-          context.order.map((order, index) => (
-            <Link key={index} to={`/my-orders/${index}`}>
-              <OrdersCard 
-                totalPrice={order.totalPrice} 
-                totalProducts={order.totalProducts}
-              />
-            </Link>
-          ))
-        }
+        My Orders
+        <div className="mt-5">
+          {
+            context.order.map((order, index) => (
+              <Link key={index} to={`/my-orders/${index}`}>
+                <OrdersCard 
+                  totalPrice={order.totalPrice} 
+                  totalProducts={order.totalProducts}
+                />
+              </Link>
+            ))
+          }
+        </div>
       </>
     )
   }
