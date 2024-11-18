@@ -7,41 +7,63 @@ const Navbar = () => {
     const context = useContext(CartContext);
     const activeStyle = "aria-[current]:underline underline-offset-4";
 
+    const handleCategoryClick = (category) => {
+        context.setSearchByCategory(category);
+    };
+
     return (
         <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-ligth">
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
-                    <NavLink to='/'>
+                    <NavLink to='/' onClick={() => handleCategoryClick('')}>
                         Shopi
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/' className={activeStyle}>
+                    <NavLink 
+                        to='/' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('')}>
                         All
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/clothes' className={activeStyle}>
-                        Clothes
+                    <NavLink 
+                        to='/audio' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('audio')}>
+                        Audio
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/electronics' className={activeStyle}>
-                        Electronics
+                    <NavLink 
+                        to='/tv' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('tv')}>
+                        TV
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/fornitures' className={activeStyle}>
-                        Fornitures
+                    <NavLink 
+                        to='/mobile' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('mobile')}>
+                        Mobile
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/toys' className={activeStyle}>
-                        Toys
+                    <NavLink 
+                        to='/gaming' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('gaming')}>
+                        Gaming
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/others' className={activeStyle}>
+                    <NavLink 
+                        to='/others' 
+                        className={activeStyle}
+                        onClick={() => handleCategoryClick('others')}>
                         Others
                     </NavLink>
                 </li>           
