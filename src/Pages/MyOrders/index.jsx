@@ -8,7 +8,7 @@ function MyOrders() {
 
     return (
       <>
-        My Orders
+        <h1 className="text-white">My Orders</h1>
         <div className="mt-5">
           {
             context.order.map((order, index) => (

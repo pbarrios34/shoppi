@@ -17,11 +17,16 @@ function MyOrder() {
           <Link to={"/my-orders"}>
             <ChevronLeftIcon className="size-6 text-blue-400 cursor-pointer"/>
           </Link>
-          <h1 className="ml-3">My Order</h1>
+          <h1 className="ml-3 text-white">My Order</h1>
 
         </div>
         <div className="flex flex-col w-96 h-[42rem]">
-          <div className="items-center w-96 h-auto mt-7 p-2 overflow-y-auto">
+          <div className="flex items-center h-20 bg-slate-100 rounded-t-2xl shadow-lg">
+              <p className="font-bold p-3">
+                <span>Order Number: {index} </span>
+              </p>
+          </div>
+          <div className="items-center w-96 h-auto p-2 overflow-y-auto bg-slate-200">
               {
                 context.order?.[index]?.products.map((product) => (
                   <OrderCard 
@@ -34,7 +39,7 @@ function MyOrder() {
                 ))           
               }
           </div>
-          <div className="flex items-center h-20 bg-slate-100 rounded-b-2xl">
+          <div className="flex items-center h-20 bg-slate-100 rounded-b-2xl shadow-inner">
             <p className="font-bold p-3">
               <span>Total: </span>
               Q.{context.order?.[index]?.totalPrice.toFixed(2)}

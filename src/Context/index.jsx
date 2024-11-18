@@ -37,6 +37,7 @@ const CartProvider = ({ children }) => {
     // Get products
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [noProductsFound, setNoProductsFound] = useState(false);
     
     // Get products by title
     const [searchByTitle, setSearchByTitle] = useState("");
@@ -69,6 +70,13 @@ const CartProvider = ({ children }) => {
     useEffect( () => {
         const filteredByTitle = filteredProductsByTitle(products, searchByTitle);
         const finalFilteredProducts = filteredProductsByCategories(filteredByTitle, searchByCategory);
+        
+        if (finalFilteredProducts.length === 0) { 
+            setNoProductsFound(true); 
+        } else { 
+            setNoProductsFound(false); 
+        }
+
         setFilteredProducts(finalFilteredProducts)
     }, [products, searchByTitle, searchByCategory]);
     
@@ -138,6 +146,7 @@ const CartProvider = ({ children }) => {
             searchByCategory,
             setSearchByCategory,
             filteredProductsByCategories,
+            noProductsFound,
         }}>
             {children}
         </CartContext.Provider>

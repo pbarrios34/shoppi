@@ -11,7 +11,11 @@ function Home() {
   const renderView = () => {
     const filteredProducts = context.filteredProducts;
 
-    if (filteredProducts?.length > 0) {
+    if (context.noProductsFound) {
+      return (
+        <h2 className="text-white">We don&apos;t have anything :(</h2>
+      )
+    } else if (filteredProducts?.length > 0) {
       if (filteredProducts?.length > 0) {
         return (
           filteredProducts?.map(product => (
@@ -20,10 +24,6 @@ function Home() {
               product={product}
             />
           ))
-        )
-      } else {
-        return (
-          <h2 className="text-white">We don&apos;t have anything :(</h2>
         )
       }
     } else {
